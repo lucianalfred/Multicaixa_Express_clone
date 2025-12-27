@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <!-- Logo / barra laranja -->
+    <ImageView
+        android:id="@+id/imgLogo"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:scaleType="centerInside"
+        android:background="@color/orange"
+        android:src="@drawable/ic_express_logo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Indicador de PIN (6 bolinhas) -->
+    <LinearLayout
+        android:id="@+id/layoutDots"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toBottomOf="@id/imgLogo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <View
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/dot_empty"/>
+
+        <View
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/dot_empty"/>
+
+        <View
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/dot_empty"/>
+
+        <View
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/dot_empty"/>
+
+        <View
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/dot_empty"/>
+
+        <View
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/dot_empty"/>
+    </LinearLayout>
+
+    <!-- Texto abaixo das bolinhas -->
+    <TextView
+        android:id="@+id/txtTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PIN do serviço MULTICAIXA"
+        android:textStyle="bold"
+        android:textColor="@android:color/darker_gray"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/layoutDots"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Teclado numérico 3x4 -->
+    <GridLayout
+        android:id="@+id/gridKeypad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:rowCount="4"
+        android:columnCount="3"
+        android:padding="8dp"
+        app:layout_constraintTop_toBottomOf="@id/txtTitulo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Linha 1 -->
+        <Button
+            android:id="@+id/btn1"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:text="1"
+            android:textSize="22sp"
+            android:textColor="#333333"
+            android:background="@drawable/bg_key_shadow"
+            android:stateListAnimator="@null"
+            android:elevation="0dp"
+            android:gravity="center"
+            android:padding="0dp" />
+
+        <Button
+            android:id="@+id/btn2"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:text="2"
+            android:textSize="22sp"
+            android:textColor="#333333"
+            android:background="@drawable/bg_key_shadow"
+            android:stateListAnimator="@null"
+            android:elevation="0dp"
+            android:gravity="center" />
+
+        <Button
+            android:id="@+id/btn3"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_row="0"
+            android:layout_column="2"
+            android:text="3"
+            android:textSize="22sp"
+            android:textColor="#333333"
+            android:background="@drawable/bg_key_shadow"
+            android:stateListAnimator="@null"
+            android:elevation="0dp"
+            android:gravity="center" />
+
+        <!-- Linha 2 -->
+        <Button
+            android:id="@+id/btn4"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:text="4"
+            android:textSize="22sp"
+            android:textColor="#333333"
+            android:background="@drawable/bg_key_shadow"
+            android:stateListAnimator="@null"
+            android:elevation="0dp"
+            android:gravity="center" />
+
+        <Button
+            android:id="@+id/btn5"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:text="5"
+            android:textSize="22sp"
+            android:textColor="#333333"
+            android:background="@drawable/bg_key_shadow"
+            android:stateListAnimator="@null"
+            android:elevation="0dp"
+            android:gravity="center" />
+
+        <Button
+            android:id="@+id/btn6"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_row="1"
+            android:layout_column="2"
+            android:text="6"
+            android:textSize="22sp"
+            android:textColor="#333333"
+            android:background="@drawable/bg_key_shadow"
+            android:stateListAnimator="@null"
+            android:elevation="0dp"
+            android:gravity="center" />
+
+        <!-- Linha 3 -->
+        <Button
+            android:id="@+id/btn7"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_row="2"
+            android:layout_column="0"
+            android:text="7"
+            android:textSize="22sp"
+            android:textColor="#333333"
+            android:background="@drawable/bg_key_shadow"
+            android:stateListAnimator="@null"
+            android:elevation="0dp"
+            android:gravity="center" />
+
+        <Button
+            android:id="@+id/btn8"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_row="2"
+            android:layout_column="1"
+            android:text="8"
+            android:textSize="22sp"
+            android:textColor="#333333"
+            android:background="@drawable/bg_key_shadow"
+            android:stateListAnimator="@null"
+            android:elevation="0dp"
+            android:gravity="center" />
+
+        <Button
+            android:id="@+id/btn9"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_row="2"
+            android:layout_column="2"
+            android:text="9"
+            android:textSize="22sp"
+            android:textColor="#333333"
+            android:background="@drawable/bg_key_shadow"
+            android:stateListAnimator="@null"
+            android:elevation="0dp"
+            android:gravity="center" />
+
+        <!-- Linha 4: DEL, 0, vazio -->
+        <Button
+            android:id="@+id/btnDel"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_row="3"
+            android:layout_column="0"
+            android:text="DEL"
+            android:textSize="18sp"
+            android:textColor="#333333"
+            android:background="@drawable/bg_key"
+            android:stateListAnimator="@null"
+            android:elevation="0dp"
+            android:gravity="center" />
+
+        <Button
+            android:id="@+id/btn0"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_row="3"
+            android:layout_column="1"
+            android:text="0"
+            android:textSize="22sp"
+            android:textColor="#333333"
+            android:background="@drawable/bg_key_shadow"
+            android:stateListAnimator="@null"
+            android:elevation="0dp"
+            android:gravity="center" />
+
+        <Space
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_row="3"
+            android:layout_column="2" />
+    </GridLayout>
+
+    <!-- Rodapé: apoio ao cliente -->
+    <LinearLayout
+        android:id="@+id/layoutFooter"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="16dp"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="APOIO AO CLIENTE"
+            android:textStyle="bold"
+            android:textColor="@color/orange"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Linha de Atendimento 24H"
+            android:textColor="@android:color/darker_gray"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(+244) 222 641 840 | 923 168 840"
+            android:textColor="@android:color/darker_gray"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="suporte.mcxexpress@emis.co.ao"
+            android:textColor="@android:color/darker_gray"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

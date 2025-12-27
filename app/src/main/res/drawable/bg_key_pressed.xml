@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!-- Cor quando pressionado (cinza bem claro) -->
+    <solid android:color="#F5F5F5" />
+
+    <!-- Borda um pouco mais escura -->
+    <stroke
+        android:width="1dp"
+        android:color="#CCCCCC" />
+
+    <!-- Cantos arredondados -->
+    <corners android:radius="8dp" />
+</shape>
