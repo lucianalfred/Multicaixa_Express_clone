@@ -3,7 +3,9 @@ package lucian.alfred.com.express_clone
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 
 class MainActivity: AppCompatActivity() {
 
@@ -20,6 +22,14 @@ class MainActivity: AppCompatActivity() {
     private lateinit var btn0: Button
     private lateinit var btnDel: Button
 
+    // Adicione referências para os dots
+    private lateinit var dot1: View
+    private lateinit var dot2: View
+    private lateinit var dot3: View
+    private lateinit var dot4: View
+    private lateinit var dot5: View
+    private lateinit var dot6: View
+
     private val pinBuilder = StringBuilder()
     private val pinLength = 6
 
@@ -27,7 +37,6 @@ class MainActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initViews()
-
         setupButtonListeners()
     }
 
@@ -44,6 +53,14 @@ class MainActivity: AppCompatActivity() {
         btn9 = findViewById(R.id.btn9)
         btn0 = findViewById(R.id.btn0)
         btnDel = findViewById(R.id.btnDel)
+
+
+        dot1 = findViewById(R.id.dot1)
+        dot2 = findViewById(R.id.dot2)
+        dot3 = findViewById(R.id.dot3)
+        dot4 = findViewById(R.id.dot4)
+        dot5 = findViewById(R.id.dot5)
+        dot6 = findViewById(R.id.dot6)
     }
 
     private fun setupButtonListeners() {
@@ -54,6 +71,7 @@ class MainActivity: AppCompatActivity() {
                 if (pinBuilder.length < pinLength) {
                     pinBuilder.append(button.text)
                     updatePinDisplay()
+                    updateDots()
                     checkPinComplete()
                 }
             }
@@ -63,6 +81,7 @@ class MainActivity: AppCompatActivity() {
             if (pinBuilder.isNotEmpty()) {
                 pinBuilder.deleteCharAt(pinBuilder.length - 1)
                 updatePinDisplay()
+                updateDots()
             }
         }
     }
@@ -71,10 +90,28 @@ class MainActivity: AppCompatActivity() {
         txtTitulo.text = "PIN: ${"•".repeat(pinBuilder.length)}${"_".repeat(pinLength - pinBuilder.length)}"
     }
 
+    private fun updateDots() {
+
+        val dots = listOf(dot1, dot2, dot3, dot4, dot5, dot6)
+
+
+        for (i in 0 until pinLength) {
+            if (i < pinBuilder.length) {
+
+                dots[i].background = ContextCompat.getDrawable(this, R.drawable.dot_filled)
+            } else {
+                // Dot vazio
+                dots[i].background = ContextCompat.getDrawable(this, R.drawable.dot_empty)
+            }
+        }
+    }
+
     private fun checkPinComplete() {
         if (pinBuilder.length == pinLength) {
             val pin = pinBuilder.toString()
             txtTitulo.text = "PIN completo: $pin"
+
+
         }
     }
 }

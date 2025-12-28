@@ -5,8 +5,6 @@
     <size
         android:width="12dp"
         android:height="12dp" />
-
-    <!-- Preenchido com a cor laranja -->
-    <solid android:color="@color/orange" />
+    <solid android:color="@color/black" />
 
 </shape>
