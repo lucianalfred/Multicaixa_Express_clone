@@ -1,5 +1,6 @@
 package lucian.alfred.com.express_clone
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -10,6 +11,7 @@ import androidx.core.content.ContextCompat
 class MainActivity: AppCompatActivity() {
 
     private lateinit var txtTitulo: TextView
+    private lateinit var pin: String
     private lateinit var btn1: Button
     private lateinit var btn2: Button
     private lateinit var btn3: Button
@@ -32,6 +34,7 @@ class MainActivity: AppCompatActivity() {
 
     private val pinBuilder = StringBuilder()
     private val pinLength = 6
+    private val correctPin = "123456"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,6 +64,8 @@ class MainActivity: AppCompatActivity() {
         dot4 = findViewById(R.id.dot4)
         dot5 = findViewById(R.id.dot5)
         dot6 = findViewById(R.id.dot6)
+
+        pin = ""
     }
 
     private fun setupButtonListeners() {
@@ -70,7 +75,6 @@ class MainActivity: AppCompatActivity() {
             button.setOnClickListener {
                 if (pinBuilder.length < pinLength) {
                     pinBuilder.append(button.text)
-                    updatePinDisplay()
                     updateDots()
                     checkPinComplete()
                 }
@@ -80,15 +84,12 @@ class MainActivity: AppCompatActivity() {
         btnDel.setOnClickListener {
             if (pinBuilder.isNotEmpty()) {
                 pinBuilder.deleteCharAt(pinBuilder.length - 1)
-                updatePinDisplay()
                 updateDots()
             }
         }
     }
 
-    private fun updatePinDisplay() {
-        txtTitulo.text = "PIN: ${"•".repeat(pinBuilder.length)}${"_".repeat(pinLength - pinBuilder.length)}"
-    }
+
 
     private fun updateDots() {
 
@@ -100,18 +101,49 @@ class MainActivity: AppCompatActivity() {
 
                 dots[i].background = ContextCompat.getDrawable(this, R.drawable.dot_filled)
             } else {
-                // Dot vazio
+
                 dots[i].background = ContextCompat.getDrawable(this, R.drawable.dot_empty)
             }
         }
     }
 
+
     private fun checkPinComplete() {
         if (pinBuilder.length == pinLength) {
-            val pin = pinBuilder.toString()
-            txtTitulo.text = "PIN completo: $pin"
+            val enteredPin = pinBuilder.toString()
+
+            if (enteredPin == correctPin) {
+                // PIN correto - abrir AddCardActivity
+                txtTitulo.text = "PIN correto! Redirecionando..."
+
+                // Esperar um pouco para mostrar a mensagem
+                dot1.postDelayed({
+                    openAddCardActivity()
+                }, 500)
+
+            } else {
+
+                txtTitulo.text = "PIN incorreto. Tente novamente."
+                txtTitulo.setTextColor(ContextCompat.getColor(this, android.R.color.holo_red_dark))
 
 
+                dot1.postDelayed({
+                    resetPin()
+                    txtTitulo.text = "Digite seu PIN"
+                    txtTitulo.setTextColor(ContextCompat.getColor(this, android.R.color.darker_gray))
+                }, 1500)
+            }
         }
+    }
+
+    private fun openAddCardActivity() {
+        val intent = Intent(this, AddCardActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun resetPin() {
+        pinBuilder.clear()
+        updateDots()
     }
 }
