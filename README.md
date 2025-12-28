@@ -1,9 +1,3 @@
-Perfeito, Luciano. Vou criar um **README profissional, claro e explicativo**, com foco em **portfólio**, mostrando visão de produto, arquitetura e boas práticas — algo que um recrutador ou avaliador técnico entende facilmente.
-
-Podes copiar e colar direto no teu repositório GitHub.
-
----
-
 # Mulicaixa Express Clone
 
 > Clone funcional e educacional do **Mulicaixa Express**, desenvolvido com o objetivo de estudar, praticar e demonstrar competências em **desenvolvimento mobile**, **APIs**, **arquitetura de software** e **integração frontend–backend**.
